@@ -48,19 +48,19 @@ Access the H2 console at [http://localhost:8080/h2-console](http://localhost:808
 - hibernate-core
 
 # for creation this project the it will follow next steps of way general: 
- 1.- generate project new -> spring started project
+ - generate project new -> spring started project
 	 - type maven 
 	 - dependencies: 
 	  	* spruing web
 	  	* spring Data JPA
 	  	* H2 Dtabase
 	  	* lombok
-  2.- see file dependencies in file pom.xml make sure  web, jpa, h2, lombook
-  3.- configuration of application.propities: H2, jpa, console h2
-  4.- create entity
-  5.- create repository
-  6.- create service
-  7.- create controller
+  - see file dependencies in file pom.xml make sure  web, jpa, h2, lombook
+ - configuration of application.propities: H2, jpa, console h2
+ - create entity
+ - create repository
+ - create service
+ - create controller
   
 
 ## License
