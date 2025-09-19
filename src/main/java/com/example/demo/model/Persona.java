@@ -10,6 +10,7 @@ import lombok.*;
  * **/
 
 @Entity
+@Table(name = "personas")
 @Data 	  				// lombook: getter, settter, toString
 @NoArgsConstructor  	// Constructor vacio
 @AllArgsConstructor 	// Constructor con tofoso los campos

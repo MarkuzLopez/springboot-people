@@ -41,6 +41,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+	    <!-- Driver PostgreSQL -->
+	    <dependency>
+	        <groupId>org.postgresql</groupId>
+	        <artifactId>postgresql</artifactId>
+	        <scope>runtime</scope>
+	    </dependency>
+
 
  	<!-- H2 Database en memoria -->
 		<dependency>

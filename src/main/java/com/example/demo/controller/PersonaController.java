@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.service.PersonaService;
 import com.example.demo.model.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +27,7 @@ import java.util.*;
 @RequestMapping("/api/personas")
 public class PersonaController {
 	
+	@Autowired
 	private final PersonaService service;
 	
 	public PersonaController(PersonaService service) {
@@ -48,7 +50,7 @@ public class PersonaController {
 	// POST: Crear nueva persona
 	@PostMapping
 	public ResponseEntity<Persona> crear(@RequestBody Persona persona){
-		return ResponseEntity.ok(service.guarar(persona));
+		return ResponseEntity.ok(service.guardar(persona));
 	}
 	
 	// PUT Actualizar persona
@@ -57,8 +59,8 @@ public class PersonaController {
 		return service.buscarPorId(id)
 				.map(p ->  {
 					p.setNombre(persona.getNombre());
-					p.setEdad(persona.getEdad());
-					return ResponseEntity.ok(service.guarar(persona));
+					p.setEdad(persona.getEdad());					
+					return ResponseEntity.ok(service.guardar(p));
 				})
 				.orElse(ResponseEntity.notFound().build());
 	}

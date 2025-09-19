@@ -29,7 +29,7 @@ public class PersonaService {
 		return repository.findById(id);
 	}
 	
-	public Persona guarar(Persona persona) {
+	public Persona guardar(Persona persona) {
 		return repository.save(persona);
 	}
 	
