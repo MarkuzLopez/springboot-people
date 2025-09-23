@@ -75,5 +75,19 @@ public class PersonaController {
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
+    
+    // controladores co Queries SQL
+    @GetMapping("/mayores/{edad}")
+    public List<Persona> mayoresDe(@PathVariable int edad) {
+    	return service.mayoresDeEdad(edad);
+    }
+    @GetMapping("/buscar/{nombre}")
+    public List<Persona> buscarNombre(@PathVariable String nombre){
+    	return service.buscarPorNombre(nombre);
+    }
+    @GetMapping("/contar/{edad}")
+    public long contarEdad(@PathVariable int edad) {
+    	return service.contarPorEdad(edad);
+    }
 	
 }

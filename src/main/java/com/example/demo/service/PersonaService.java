@@ -36,4 +36,15 @@ public class PersonaService {
 	public void eliminar(Long id) {
 		repository.deleteById(id);
 	}
+	
+	// consultas con SQL @Queries 
+	public List<Persona> mayoresDeEdad(int edad){
+		return repository.buscarMayoresDe(edad);
+	}
+	public List<Persona> buscarPorNombre(String nombre){
+		return repository.buscarPorNombre(nombre);
+	}
+	public long contarPorEdad(int edad) {
+		return repository.contarPorEdad(edad);
+	}
 }

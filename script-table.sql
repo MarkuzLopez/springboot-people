@@ -19,3 +19,8 @@ INSERT INTO personas (nombre, edad, email) VALUES ('Juan Perez', 30, '
 \dt; --> Listar tablas
 DROP TABLE personas; --> Eliminar tabla
 \d+ personas; --> Describir tabla
+
+brew update
+brew services restart postgresql --> para iniciar postgresql 
+brew services stop postgresql --> parar postgre 
+rm /usr/local/var/postgresql@14/postmaster.pid --> eliminar achivo cuando no hga coneccion

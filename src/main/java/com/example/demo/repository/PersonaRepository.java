@@ -1,12 +1,14 @@
 package com.example.demo.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.demo.model.Persona;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import com.example.demo.model.Persona;
 /**
  * PASO 4 Crear repository, implementando interface usando JPA
  */
-
 /**
  * En Spring Data JPA, un repositorio es una interfaz que permite acceder 
  * y manipular datos en la base de datos.
@@ -29,4 +31,16 @@ import com.example.demo.model.Persona;
  */
 
 public interface PersonaRepository extends JpaRepository<Persona, Long> {
+	  // 🔹 Consulta con JPQL (usa nombres de entidades, no tablas)
+    	@Query("SELECT p FROM Persona p Where p.edad > :edad")
+    	List<Persona> buscarMayoresDe(@Param("edad") int edad);
+    	
+    	// consulta coj like busqueda parcial
+    	@Query("SELECT p From Persona p WHERE p.nombre LIKE %:nombre%")
+    	List<Persona> buscarPorNombre(@Param("nombre") String nombre );
+    	
+    	//Contar persoas por edad 
+    	@Query("SELECT COUNT(p) FROM Persona p WHERE p.edad =:edad ")
+    	long contarPorEdad(@Param("edad") int edad);
+    	
 }
