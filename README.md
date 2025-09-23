@@ -61,6 +61,35 @@ Access the H2 console at [http://localhost:8080/h2-console](http://localhost:808
  - create repository
  - create service
  - create controller
+
+commands basic stop port 8080: 
+  # lsof -i :8080 --> watch ports in used 
+  # kill -9 <PID> --> kill process  in port 
+
+struct folders in app: 
+src/main/java/com/ejemplo/demo
+│
+├── controller
+│   └── PersonaController.java       # Controladores REST (@RestController)
+│
+├── dto
+│   ├── PersonaDTO.java              # DTO de entrada con validaciones
+│   └── PersonaResponseDTO.java      # DTO de salida limpio
+│
+├── exception
+│   ├── ErrorResponse.java           # DTO para devolver errores
+│   └── GlobalExceptionHandler.java  # @ControllerAdvice + @ExceptionHandler
+│
+├── model
+│   └── Persona.java                 # Entidad JPA con anotaciones de validación
+│
+├── repository
+│   └── PersonaRepository.java       # Extiende JpaRepository
+│
+├── service
+│   └── PersonaService.java          # Lógica de negocio y conexión al repo
+│
+├── DemoApplication.java             # Clase principal con @SpringBootApplication
   
 
 ## License
