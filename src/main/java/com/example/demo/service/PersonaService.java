@@ -48,8 +48,9 @@ public class PersonaService {
 		return repository.findById(id).map( p ->  {
 			p.setNombre(dto.getNombre());
 			p.setEdad(dto.getEdad());
-			return repository.save(p);
-		}).orElseThrow(() -> new RuntimeException("persona no encontrada"));
+			Persona updated =  repository.save(p);			
+			return new Persona(id, updated.getNombre(), updated.getEdad());
+		}).orElseThrow(() -> new RuntimeException("Persona con id" + id + "no encontrada"));
 	}
 	
 	public void eliminar(Long id) {
