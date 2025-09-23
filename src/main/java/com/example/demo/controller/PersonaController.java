@@ -5,6 +5,7 @@ import com.example.demo.service.PersonaService;
 import jakarta.validation.Valid;
 
 import com.example.demo.dto.PersonaDTO;
+import com.example.demo.dto.PersonaResponseDTO;
 import com.example.demo.model.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,12 @@ public class PersonaController {
 	
 	// GET: Listar todas personas
 	@GetMapping("/all")
-	public ResponseEntity<List<Persona>> listar(){
+	public ResponseEntity<List<PersonaResponseDTO>> listar(){
 		return ResponseEntity.ok(service.listar());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Persona> buscarPorId(@PathVariable Long id) {
+	public ResponseEntity<PersonaResponseDTO> buscarPorId(@PathVariable Long id) {
 		return service.buscarPorId(id)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());

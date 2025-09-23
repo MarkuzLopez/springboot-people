@@ -1,12 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.repository.PersonaRepository;
-import com.example.demo.dto.PersonaDTO;
+import com.example.demo.dto.*;
 import com.example.demo.model.Persona;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+
 
 /**
  * PASO 5 crear repository el cual realiza  las acciones de CRUD 
@@ -22,12 +25,16 @@ public class PersonaService {
 		this.repository = repository;
 	}
 	
-	public List<Persona>listar() {
-		return repository.findAll();
+	public List<PersonaResponseDTO>listar() {
+		return repository.findAll()
+				.stream()
+				.map(p -> new  PersonaResponseDTO(p.getNombre(), p.getEdad()))
+				.collect(Collectors.toList());
 	}
 	
-	public Optional<Persona> buscarPorId(Long id){
-		return repository.findById(id);
+	public Optional<PersonaResponseDTO> buscarPorId(Long id){
+		return repository.findById(id)
+				.map(p -> new PersonaResponseDTO(p.getNombre(), p.getEdad()));
 	}
 	
 	public Persona guardar(PersonaDTO dto) {
