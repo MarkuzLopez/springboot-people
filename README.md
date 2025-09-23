@@ -66,8 +66,7 @@ Access the H2 console at [http://localhost:8080/h2-console](http://localhost:808
    -  lsof -i :8080 --> watch ports in used 
     - kill -9 <PID> --> kill process  in port 
 
-<img width="808" height="615" alt="struct folder" src="https://github.com/user-attachments/assets/2511c0e1-82c3-42ec-b0d4-df92a5e42717" />
-             # Clase principal con @SpringBootApplicatio
+<img width="808" height="615" alt="struct folder" src="https://github.com/user-attachments/assets/2511c0e1-82c3-42ec-b0d4-df92a5e42717" />             
 
 
 ## License
