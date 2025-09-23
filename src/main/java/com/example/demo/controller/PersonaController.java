@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.PersonaService;
+
+import jakarta.validation.Valid;
+
 import com.example.demo.model.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +52,10 @@ public class PersonaController {
 	
 	// POST: Crear nueva persona
 	@PostMapping
-	public ResponseEntity<Persona> crear(@RequestBody Persona persona){
-		return ResponseEntity.ok(service.guardar(persona));
+	public ResponseEntity<Persona> crear(@Valid  @RequestBody Persona persona){
+		//return ResponseEntity.ok(service.guardar(persona));
+		Persona nueva = service.guardar(persona);
+		return ResponseEntity.ok(nueva);
 	}
 	
 	// PUT Actualizar persona

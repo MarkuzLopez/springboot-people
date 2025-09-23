@@ -1,6 +1,11 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 /** 
@@ -29,7 +34,13 @@ public class Persona {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //  auto incremental
 	private Long id;
 	
-	@Column(nullable = false, length = 100) // Opcional: para personalizar columna
+	
+	@NotNull(message = "El nombre no puede ser  nulo")
+	@Size(min= 2, max = 50, message = "El nombre denbe tener entre 2 y 50 caracteres")
+	@Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ'\\-]*$", message = "El nombre no es válido")    
 	private String nombre;
-	private int edad;	
+	
+	@Min( value = 18, message = "la edad minima es 18")	
+	@Max( value= 100, message = "la edad maxima es 100")
+	private int edad;
 }
