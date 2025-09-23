@@ -62,11 +62,6 @@ Access the H2 console at [http://localhost:8080/h2-console](http://localhost:808
  - create service
  - create controller
 
-commands basic stop port 8080: 
-  # lsof -i :8080 --> watch ports in used 
-  # kill -9 <PID> --> kill process  in port 
-
-struct folders in app: 
 src/main/java/com/ejemplo/demo
 │
 ├── controller
@@ -89,8 +84,8 @@ src/main/java/com/ejemplo/demo
 ├── service
 │   └── PersonaService.java          # Lógica de negocio y conexión al repo
 │
-├── DemoApplication.java             # Clase principal con @SpringBootApplication
-  
+├── DemoApplication.java             # Clase principal con @SpringBootApplicatio
+
 
 ## License
 
