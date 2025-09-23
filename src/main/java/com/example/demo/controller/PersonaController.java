@@ -4,6 +4,7 @@ import com.example.demo.service.PersonaService;
 
 import jakarta.validation.Valid;
 
+import com.example.demo.dto.PersonaDTO;
 import com.example.demo.model.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,22 +53,16 @@ public class PersonaController {
 	
 	// POST: Crear nueva persona
 	@PostMapping
-	public ResponseEntity<Persona> crear(@Valid  @RequestBody Persona persona){
+	public ResponseEntity<Persona> crear(@Valid  @RequestBody PersonaDTO dto){
 		//return ResponseEntity.ok(service.guardar(persona));
-		Persona nueva = service.guardar(persona);
-		return ResponseEntity.ok(nueva);
+		return ResponseEntity.ok(service.guardar(dto));
 	}
 	
 	// PUT Actualizar persona
 	@PutMapping("/{id}")
-	public ResponseEntity<Persona> actualizar(@PathVariable Long id, @RequestBody Persona persona ){
-		return service.buscarPorId(id)
-				.map(p ->  {
-					p.setNombre(persona.getNombre());
-					p.setEdad(persona.getEdad());					
-					return ResponseEntity.ok(service.guardar(p));
-				})
-				.orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<Persona> actualizar(@PathVariable Long id, @Valid
+											@RequestBody PersonaDTO dto ){
+		return ResponseEntity.ok(service.update(id, dto));
 	}
 	
 	 // DELETE: Eliminar persona

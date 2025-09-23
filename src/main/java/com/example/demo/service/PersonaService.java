@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.repository.PersonaRepository;
+import com.example.demo.dto.PersonaDTO;
 import com.example.demo.model.Persona;
 
 import org.springframework.stereotype.Service;
@@ -29,8 +30,19 @@ public class PersonaService {
 		return repository.findById(id);
 	}
 	
-	public Persona guardar(Persona persona) {
+	public Persona guardar(PersonaDTO dto) {
+		Persona persona =  new Persona();
+		persona.setNombre(dto.getNombre());
+		persona.setEdad(dto.getEdad());
 		return repository.save(persona);
+	}
+	
+	public Persona update(Long id, PersonaDTO dto) { 
+		return repository.findById(id).map( p ->  {
+			p.setNombre(dto.getNombre());
+			p.setEdad(dto.getEdad());
+			return repository.save(p);
+		}).orElseThrow(() -> new RuntimeException("persona no encontrada"));
 	}
 	
 	public void eliminar(Long id) {
