@@ -38,11 +38,11 @@ public class SecurityConfig {
      * Añade un filtro personalizado para manejar la autenticación JWT.
      */
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
+            .csrf(csrf -> csrf.disable()) // descativa cORS
+            .cors(cors -> {}) // habilita CORS con la configuacion de arriba
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/public/**").permitAll()
                 .requestMatchers("/api/personas/**").authenticated()
