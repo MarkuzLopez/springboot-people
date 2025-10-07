@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
  * El tiempo de expiración del token es de una hora.
  */
 
+//TODO: pasar de component a metodos estaticos (ibvestigar) 
 
 @Component
 public class JwtUtil {

@@ -25,6 +25,8 @@ public class GlobalExceptionHandler {
 	}
 	
 	//Manejo de runTimeException (ej: Persona no encontrada)
+	// checked exception unchecked (Investigar)
+	// @ExceptionHandler(value = { RuntimeException.class, Exception.class }) ///
 	@ExceptionHandler(RuntimeException.class)
 	public ResponseEntity<ErrorResponse> handleRunTimeException(RuntimeException ex, WebRequest request) { 
 		ErrorResponse error =  new ErrorResponse(

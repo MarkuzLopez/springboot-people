@@ -9,6 +9,8 @@ import lombok.*;
  * Se marca con la anotación @Entity para que JPA/Hibernate la reconozca.
  * **/
 
+// package debeb de llamarse entity y no models,
+
 @Entity
 @Table(name = "personas")
 @Data 	  				// lombook: getter, settter, toString

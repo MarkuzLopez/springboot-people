@@ -1,8 +1,15 @@
 package com.example.demo.dto;
 
-import jakarta.validation.constraints.*;
+import com.example.demo.share.JakartaConstants;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+// usar mejor los getters y setters 
 
 @Data 	  				// lombook: getter, settter, toString
 public class PersonaDTO {
@@ -18,13 +25,14 @@ public class PersonaDTO {
 	 * @AssertTrue, @AssertFalse → para booleanos.
 	 */
 
-	@NotNull(message = "El nombre no puede ser  nulo")
-	@Size(min= 2, max = 50, message = "El nombre denbe tener entre 2 y 50 caracteres")
-	@Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ'\\-]*$", message = "El nombre no es válido")    
+	//TODO: 
+	@NotNull(message = JakartaConstants.NULL_NAME_MESSAGE )
+	@Size(min= JakartaConstants.INT_2, max = JakartaConstants.INT_50, message = JakartaConstants.NAME_RESPONSE_MESSAGE)
+	@Pattern(regexp = JakartaConstants.REGEX_NAME, message = JakartaConstants.NAME_RESPONSE_INVALID)    
 	private String nombre;
 	
-	@Min( value = 18, message = "la edad minima es 18")	
-	@Max( value= 100, message = "la edad maxima es 100")
+	@Min( value = JakartaConstants.INT_18, message = JakartaConstants.MESSAGE_AGE_MINIUM)	
+	@Max( value= JakartaConstants.INT_100, message = JakartaConstants.MESSAGE_AGE_MAX)
 	private int edad;
 	
 }

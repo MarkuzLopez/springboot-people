@@ -32,6 +32,9 @@ public class AuthController {
 	 * @return Respuesta indicando el éxito o fracaso del registro.
 	 */
 	
+	// TODO: validar si eciste usuario; si existe validar el role,  si no eciste usuario regresar not found 404, si no existe el role not foun 404 
+	
+	
 	@PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
         if (usuarioRepository.findByUsername(request.getUsername()).isPresent()) {
@@ -55,6 +58,7 @@ public class AuthController {
 	 * @throws RuntimeException si el usuario no es encontrado o la contraseña es incorrecta.
 	 */
 
+	// 
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {

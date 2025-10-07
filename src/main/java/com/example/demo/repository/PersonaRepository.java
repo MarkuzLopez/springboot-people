@@ -39,7 +39,7 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
     	@Query("SELECT p From Persona p WHERE p.nombre LIKE %:nombre%")
     	List<Persona> buscarPorNombre(@Param("nombre") String nombre );
     	
-    	//Contar persoas por edad 
+    	//Contar personas por edad 
     	@Query("SELECT COUNT(p) FROM Persona p WHERE p.edad =:edad ")
     	long contarPorEdad(@Param("edad") int edad);
     	
